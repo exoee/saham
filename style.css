@@ -1,0 +1,155 @@
+/* ===== Design tokens ===== */
+:root{
+  --bg:        #0A0E14;
+  --surface:   #10161F;
+  --surface-2: #161F2B;
+  --border:    #232C39;
+  --text:      #E8EBF0;
+  --muted:     #8B96A5;
+  --green:     #16C784;
+  --red:       #E4453A;
+  --gold:      #D4A94E;
+  --font-ui:   'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-num:  'JetBrains Mono', monospace;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:var(--font-ui); -webkit-font-smoothing:antialiased; }
+body{ font-size:15px; line-height:1.5; }
+
+.app{ max-width:960px; margin:0 auto; padding-bottom:48px; }
+
+/* ===== Header ===== */
+.topbar{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px; background:rgba(10,14,20,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.brand{ font-family:var(--font-num); font-weight:700; letter-spacing:.5px; white-space:nowrap; }
+.brand-mark{ color:var(--gold); }
+.brand-sub{ color:var(--muted); font-size:.75em; margin-left:2px; }
+
+.ticker-picker{ display:flex; gap:8px; flex:1 1 220px; min-width:180px; }
+.ticker-input{
+  flex:1; background:var(--surface-2); border:1px solid var(--border); border-radius:6px;
+  color:var(--text); padding:8px 10px; font-family:var(--font-num); font-size:.9em;
+}
+.ticker-input:focus{ outline:none; border-color:var(--gold); }
+.btn-load{
+  background:var(--gold); color:#141414; border:none; border-radius:6px; padding:8px 14px;
+  font-weight:700; font-size:.85em; cursor:pointer;
+}
+.btn-load:hover{ filter:brightness(1.08); }
+
+.status-cluster{ display:flex; align-items:center; gap:8px; margin-left:auto; }
+.dot{ width:8px; height:8px; border-radius:50%; background:var(--muted); flex:none; }
+.dot.live{ background:var(--green); box-shadow:0 0 6px var(--green); }
+.dot.err{ background:var(--red); box-shadow:0 0 6px var(--red); }
+.status-text{ color:var(--muted); font-size:.78em; white-space:nowrap; }
+.icon-btn{ background:transparent; border:1px solid var(--border); color:var(--muted); border-radius:6px; width:30px; height:30px; cursor:pointer; }
+.icon-btn:hover{ color:var(--text); border-color:var(--muted); }
+
+/* ===== Quote strip ===== */
+.quote-strip{
+  display:flex; flex-wrap:wrap; align-items:center; gap:14px 24px;
+  padding:14px 16px; border-bottom:1px solid var(--border); background:var(--surface);
+}
+.quote-name{ display:flex; flex-direction:column; }
+.quote-name span:first-child{ font-weight:600; }
+.quote-code{ font-family:var(--font-num); color:var(--muted); font-size:.8em; }
+.quote-price{ display:flex; align-items:baseline; gap:10px; }
+#qPrice{ font-family:var(--font-num); font-size:1.6em; font-weight:700; }
+.quote-change{ font-family:var(--font-num); font-weight:600; padding:2px 8px; border-radius:4px; font-size:.85em; }
+.quote-change.up{ color:var(--green); background:rgba(22,199,132,.12); }
+.quote-change.down{ color:var(--red); background:rgba(228,69,58,.12); }
+.quote-meta{ display:flex; gap:18px; margin-left:auto; flex-wrap:wrap; }
+.quote-meta div{ display:flex; flex-direction:column; }
+.quote-meta label{ color:var(--muted); font-size:.7em; text-transform:none; }
+.quote-meta span{ font-family:var(--font-num); font-size:.85em; }
+
+/* ===== Menu dropdown ===== */
+.menu-bar{ display:flex; align-items:center; gap:10px; padding:12px 16px; border-bottom:1px solid var(--border); }
+.menu-label{ color:var(--muted); font-size:.78em; white-space:nowrap; }
+.menu-select{
+  flex:1; background:var(--surface-2); color:var(--text); border:1px solid var(--border);
+  border-radius:6px; padding:9px 10px; font-family:var(--font-ui); font-size:.9em;
+}
+.menu-select:focus{ outline:none; border-color:var(--gold); }
+
+/* ===== Panels ===== */
+.panel{ display:none; padding:18px 16px 8px; }
+.panel.active{ display:block; }
+.panel-head{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+.panel-head h2{ font-size:1.05em; margin:0; font-weight:700; }
+.subhead{ font-size:.9em; color:var(--muted); margin:22px 0 8px; font-weight:600; }
+
+.chip-row{ display:flex; gap:6px; }
+.chip{
+  background:transparent; border:1px solid var(--border); color:var(--muted);
+  padding:6px 12px; border-radius:20px; font-size:.78em; cursor:pointer;
+}
+.chip.active{ border-color:var(--gold); color:var(--gold); }
+
+.chart-box{ width:100%; height:380px; border:1px solid var(--border); border-radius:8px; overflow:hidden; background:var(--surface); }
+.mini-chart{ width:100%; height:160px; border:1px solid var(--border); border-radius:8px; margin-top:14px; background:var(--surface); }
+
+.fib-legend{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:12px; }
+.fib-legend .fib-item{ font-family:var(--font-num); font-size:.78em; color:var(--muted); display:flex; align-items:center; gap:6px; }
+.fib-legend .swatch{ width:10px; height:10px; border-radius:2px; flex:none; }
+
+.hint{ color:var(--muted); font-size:.78em; margin-top:10px; line-height:1.6; }
+.method-note{
+  color:var(--muted); font-size:.82em; line-height:1.6; margin:0 0 16px;
+  padding:10px 12px; border-left:3px solid var(--gold); background:var(--surface);
+}
+
+/* Signal cards (Bandarmology / Retail / Acc-Dist / Foreign flow) */
+.signal-card{
+  border-left:4px solid var(--border); background:var(--surface);
+  border-radius:0 8px 8px 0; padding:16px; display:flex; flex-direction:column; gap:10px;
+}
+.signal-card.accum{ border-color:var(--green); }
+.signal-card.distrib{ border-color:var(--red); }
+.signal-card.neutral{ border-color:var(--muted); }
+.signal-title{ font-weight:700; font-size:1.05em; }
+.signal-title.accum{ color:var(--green); }
+.signal-title.distrib{ color:var(--red); }
+.signal-sub{ color:var(--muted); font-size:.85em; }
+.signal-bar-track{ height:8px; border-radius:4px; background:var(--surface-2); overflow:hidden; }
+.signal-bar-fill{ height:100%; border-radius:4px; }
+.signal-metrics{ display:flex; gap:22px; flex-wrap:wrap; margin-top:4px; }
+.signal-metrics div{ display:flex; flex-direction:column; }
+.signal-metrics label{ color:var(--muted); font-size:.7em; }
+.signal-metrics span{ font-family:var(--font-num); font-weight:600; }
+
+/* Tables */
+.filter-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+.filter-row label{ color:var(--muted); font-size:.78em; }
+.filter-input{ background:var(--surface-2); border:1px solid var(--border); color:var(--text); border-radius:6px; padding:6px 10px; font-size:.85em; font-family:var(--font-ui); }
+.text-input{ width:100%; background:var(--surface-2); border:1px solid var(--border); color:var(--text); border-radius:6px; padding:9px 10px; font-family:var(--font-num); font-size:.85em; margin-bottom:10px; }
+
+.data-table{ width:100%; border-collapse:collapse; font-size:.85em; }
+.data-table thead th{
+  text-align:left; color:var(--muted); font-weight:600; font-size:.78em;
+  padding:8px 6px; border-bottom:1px solid var(--border);
+}
+.data-table tbody td{ padding:9px 6px; border-bottom:1px solid var(--border); font-family:var(--font-num); }
+.data-table tbody tr:hover{ background:var(--surface); cursor:pointer; }
+.data-table td.up{ color:var(--green); }
+.data-table td.down{ color:var(--red); }
+.data-table td.hot{ color:var(--gold); font-weight:700; }
+
+.settings-block{ margin-bottom:26px; }
+.settings-block code{ background:var(--surface-2); padding:1px 5px; border-radius:4px; font-size:.85em; }
+
+/* ===== Responsive ===== */
+@media (max-width:640px){
+  .quote-meta{ margin-left:0; gap:14px; }
+  #qPrice{ font-size:1.3em; }
+  .panel-head h2{ font-size:1em; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
